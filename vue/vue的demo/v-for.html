@@ -1,0 +1,92 @@
+<!-- v-for数组中的使用 -->
+<!-- v-for对象中的使用 -->
+<!-- v-for一段数值范围 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>v-for的使用</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <tr>
+                <th>编号</th>
+                <th>标题</th>
+            </tr>
+            <tbody>
+                <tr v-for="(item,index) in items">
+                    <td>{{item.id}}</td>
+                    <td>{{item.title}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- v-for在对象中的使用 -->
+        <li v-for="(value,key,index) in user">{{value}} - {{key}} - {{index}}</li>
+        <!-- 一段取值范围的v-for -->
+        <table border="1" width="100px">
+            <tr v-for="v in 20">
+                <td>{{v}}</td>
+            </tr>
+        </table>
+        <!-- v-for与computed -->
+        <li v-for="student in status">{{student.name}} - {{student.sex}}</li>
+        {{type}}
+        <input type="radio" v-model='type' name="type" value="girl"> 女孩
+        <input type="radio" v-model="type" name="type" value="boy"> 男孩
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        computed: {
+            status() {
+                if (this.type == 'all') {
+                    return this.userList;
+                } else {
+                    return this.userList.filter((v) => {
+                        return v.sex == this.type;
+                    });
+                }
+            }
+        },
+        data: {
+            items: [{
+                id: 1,
+                title: 'One'
+            }, {
+                id: 2,
+                title: 'Two'
+            }, {
+                id: 3,
+                title: 'Three'
+            }, ],
+            user: {
+                name: 'liuting',
+                age: '29',
+                sex: 'girl'
+            },
+            userList: [{
+                    name: "小红",
+                    sex: 'girl'
+                },
+                {
+                    name: "小明",
+                    sex: 'boy'
+                }, {
+                    name: "小雅",
+                    sex: 'girl'
+                }, {
+                    name: "小培",
+                    sex: 'boy'
+                }
+            ],
+            type: 'all'
+        }
+    })
+    </script>
+</body>
+
+</html>

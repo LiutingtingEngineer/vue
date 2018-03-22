@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>访问原始的 DOM 事件。可以用特殊变量 $event 把它传入方法</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <div id="app">
+    <!-- 第二中解决方法是采用时间修饰符来解决 -->
+        <form action="" v-on:submit='post($event)'>
+            <h1>{{times}}</h1>
+            <button>提交</button>
+        </form>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            times: new Date()
+        },
+        methods: {
+            post(event) {
+                // 第一种方法用传入的原始时间来解决
+                // if (event) event.preventDefault();
+                alert(123456);
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

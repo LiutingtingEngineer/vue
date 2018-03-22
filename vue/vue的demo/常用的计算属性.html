@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>vue中计算属性的使用:computed</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <style>
+
+    </style>
+    <div id="hdcms">
+        <input type="text" v-model="n1"> +
+        <input type="text" v-model="n2"> =
+        <input type="text" v-model="sum">
+    </div>
+    <script>
+    var app = new Vue({
+        el: '#hdcms',
+        data: {
+            n1: 0,
+            n2: 0
+        },
+        computed: {
+            sum: function() {
+                return this.n1 * 1 + this.n2 * 1;
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

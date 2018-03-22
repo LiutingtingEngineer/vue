@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>用key管理可复用的元素</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <template v-if="loginType == 'Email'">
+            <label>Email：</label>
+            <input type="text" placeholder="请输入正确的邮箱地址" key='EmailType'>
+        </template>
+        <template v-if="loginType == 'Phone'">
+            <label>手机号：</label>
+            <input type="text" placeholder="请输入正确的手机号" key='phoneType'>
+        </template>
+        <br>
+        <input type="radio" value="Email" v-model='loginType'> 邮箱注册
+        <input type="radio" value="Phone" v-model='loginType'> 手机注册
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            loginType: 'Email'
+        }
+    })
+    </script>
+</body>
+
+</html>

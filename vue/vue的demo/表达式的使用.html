@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>vue中表达式两种使用场景</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <style>
+    .hd1 {
+        color: red;
+    }
+
+    .hd2 {
+        color: green;
+    }
+    </style>
+    <div id="hdcms">
+        <!-- 注意：字符串加引号，变量不加引号 -->
+        <h1>{{n}}</h1>
+        <h1 :class="'hd' + n">强人</h1>
+        <input type="text" v-model="n">
+        <br>
+        <input type="radio" v-model="n" value="1"> 红
+        <input type="radio" v-model="n" value="2"> 绿
+    </div>
+    <script>
+    var app = new Vue({
+        el: '#hdcms',
+        data: {
+            n: 1
+        }
+    })
+    </script>
+</body>
+
+</html>

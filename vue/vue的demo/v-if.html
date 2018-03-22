@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>v-if 、v-else 、 v-else-if的使用</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model='age'>
+        <span v-if='age < 10'>小孩</span>
+        <span v-else-if='age < 30'>青年</span>
+        <span v-else-if='age < 45'>壮年</span>
+        <span v-else>老年</span>
+        </br>
+        <input type="checkbox" v-model='copyright'>接受协议 </br>
+        <span v-if='copyright == false'>请先接受协议</span>
+        <button v-else>注册</button>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            copyright: false,
+            age: 0
+        }
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>变异方法--push</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <li v-for='(value,index) in comments'>
+            <span>{{value.content}}</span>
+            <button v-on:click='splice(index)'>删除</button>
+        </li>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            comments: [{
+                content: '你唱的太好了'
+            }, {
+                content: '我是你的崇拜者'
+            }, {
+                content: '还发新歌不'
+            }],
+        },
+        methods: {
+            splice(index) {
+                this.comments.splice(index, 1, );
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

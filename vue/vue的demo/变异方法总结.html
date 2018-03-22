@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>变异方法的七个方法和关于filter的使用</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <li v-for='value in comments'>
+            <span>{{value.id}} - {{value.content}}</span>
+            <button v-on:click="splice()">删除</button>
+        </li>
+        <textarea v-model='current' rows="10" cols="30"></textarea>
+        <br>
+        <button v-on:click="push('pre')">发表到第一条</button>
+        <button v-on:click="push('end')">发表到最后一条</button>
+        <br>
+        <button v-on:click="del('pre')">删除第一条</button>
+        <button v-on:click="del('end')">删除最后一条</button>
+        <br>
+        <button v-on:click="sort()">按照编号排序</button>
+        <button v-on:click='reverse()'>顺序翻转</button>
+        <br>
+        <input type="text" placeholder="请输入查询内容" v-on:keyup.enter='search()' v-model='search_content'>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            comments: [{
+                id: 2,
+                content: '你唱的太好了'
+            }, {
+                id: 1,
+                content: '我是你的崇拜者'
+            }, {
+                id: 3,
+                content: '还发新歌不'
+            }],
+            current: '',
+            search_content: ''
+        },
+        methods: {
+            search() {
+                //在这里注意作用域的问题 方法套用方法的时候很容易出错
+                this.comments = this.comments.filter((item) => {
+                    var reg = new RegExp(this.search_content);
+                    return reg.test(item.content);
+                })
+            },
+            sort() {
+                this.comments.sort(function(a, b) {
+                    return a.id > b.id;
+                })
+            },
+            reverse() {
+                this.comments.reverse();
+            },
+            push(title) {
+                switch (title) {
+                    case 'pre':
+                        var item = { id: this.comments.length + 1, content: this.current }
+                        this.comments.unshift(item);
+                        this.current = '';
+                        break;
+                    case 'end':
+                        var item = { id: this.comments.length + 1, content: this.current };
+                        this.comments.push(item);
+                        this.current = '';
+                        break;
+                }
+
+            },
+            del(title) {
+                switch (title) {
+                    case 'pre':
+                        this.comments.shift();
+                        break;
+                    case 'end':
+                        this.comments.pop();
+                        break;
+                }
+            },
+            splice(index) {
+                // 在注意需要注意的一点是三个参数的使用不同之处
+                this.comments.splice(index, 1);
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

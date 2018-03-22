@@ -1,0 +1,24 @@
+<!--关于vue的创建-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>vue的小试牛刀 引入创建</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!'
+        }
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!-- v-if是真正的元素移除 -->
+<!-- v-show是先渲染再去修改之后的现实和隐藏 ，当显示和隐藏比较频繁的时候建议使用v-show,减少渲染的开销，因为v-show只是简单的Css样式切换-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>v-show与v-if的差异对比</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" v-model='show'> 是否需要显示
+        <h1 v-if='show'>vue中文官网</h1>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            show: true
+        }
+    })
+    </script>
+</body>
+
+</html>

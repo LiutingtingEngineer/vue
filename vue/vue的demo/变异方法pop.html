@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>变异方法--pop</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <li v-for='(value,index) in comments'>
+            {{value.content}}
+        </li>
+        <button v-on:click='pop'>删除</button>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        computed: {
+
+        },
+        data: {
+            comments: [{
+                content: '你唱的太好了'
+            }, {
+                content: '我是你的崇拜者'
+            }, {
+                content: '还发新歌不'
+            }],
+        },
+        methods: {
+            pop(index) {
+                this.comments.pop(index);
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

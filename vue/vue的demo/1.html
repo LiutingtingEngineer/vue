@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>vue的第一课</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <style>
+    .red {
+        color: red;
+    }
+
+    #houdun {
+        color: green;
+    }
+    </style>
+    <div>注意点：1、vue对象的创建
+        <br> 2、v-bind的使用和缩写、绑定vue实例和直接绑定的区别是名称不需要使用引号
+        <br> 3、绑定定容 v-model(双向绑定) v-once 只绑定初始化的一次
+        <br> 4、方法的使用 属性为methods 用于存储各种方法
+        <br> 5、v-text v-html
+    </div>
+    <div id="hdcms">
+        <h1 v-bind:class="hd" :id="'houdun'">hdphp</h1>
+        <h2>{{message}}</h2>
+        <h3 v-once>{{message}}</h3>
+        <h4>{{greet('moring')}}</h4>
+        <input type="text" v-model="message">
+        <h1 v-text='message'></h1>
+        <h2 v-html='title'></h2>
+    </div>
+    <script src='1.js'></script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>vue中watch属性的使用</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="hdcms">
+        <input type="text" v-model="word">
+    </div>
+    <script>
+    var app = new Vue({
+        el: '#hdcms',
+        watch: {
+            word: function() {
+                console.log(this.word);
+                // axios.get('http://localhost/Documents/vue练习项目文档/vue的demo学习/watch.php?word=' + newV).then(function(response) {
+                //     console.log(response);
+                // })
+            }
+        },
+        data: {
+            word: ''
+        }
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>vue中watch属性的使用</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <style>
+    .green {
+        color: green;
+    }
+
+    .color {
+        color: red;
+    }
+
+    .font {
+        font-size: 50px;
+    }
+
+    .success {
+        color: yellow;
+    }
+
+    .error {
+        color: red;
+    }
+    </style>
+    <div id="hdcms">
+        <h1 class="green" :class='hd'>后盾人</h1>
+        <h2 :class='[success,font]'>www.baidu.com</h2>
+        <h3 :class='{color:false}'>内联样式</h3>
+        <div>
+        <p v-text='description'></p>
+            <li v-for="v in news">
+                <span :class="v.status? 'success ' : 'error '">{{v.title}}</span>
+                <button v-on:click='changeStatus(v,false) ' v-if='v.status '>删除</button>
+                <button v-on:click='changeStatus(v,true) ' v-if='!v.status '>恢复</button>
+            </li>
+        </div>
+    </div>
+    <script>
+    var app = new Vue({
+        el: '#hdcms ',
+        data: {
+            hd: { color: false, font: true },
+            success: 'color ',
+            font: 'font ',
+            news: [{ title: '今天是星期五 ', status: true }, { title: '今天是星期六 ', status: true }],
+            description: 'class中可以使用三元表达式 '
+        },
+        methods: {
+            changeStatus: function(item, status) {
+                item.status = status;
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

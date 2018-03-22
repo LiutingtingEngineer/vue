@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>变异方法--push</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <li v-for='value in comments'>{{value.content}}</li>
+        <textarea v-model='current' rows="10" cols="30" ></textarea>
+        <button v-on:click='push'>"发表</button>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            comments: [{
+                content: '你唱的太好了'
+            }, {
+                content: '我是你的崇拜者'
+            }, {
+                content: '还发新歌不'
+            }],
+            current: ''
+        },
+        methods: {
+            push() {
+                var item = { content: this.current }
+                this.comments.push(item);
+                this.current = ''
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

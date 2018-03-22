@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>vue控制style样式属性</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <style>
+
+    </style>
+    <div id="hdcms">
+        <h1 :style="{color:'red',fontSize: size +'px'}"></h1>
+    </div>
+    <script>
+    var app = new Vue({
+        el: '#hdcms',
+        data: {
+            color: 'green',
+            size: 18,
+            style: {
+                color: 'blue',
+                size: 19 px
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>
