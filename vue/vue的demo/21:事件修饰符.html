@@ -1,0 +1,72 @@
+<!-- 
+/*  常用的五种事件修饰符
+ *  .stop    阻止单击事件继续传播
+ *  .prevent 提交事件不再重载页面
+ *  .capture 元素自身触发的事件先在此处处理，然后才交由内部元素进行处理
+ *  .self    只当在 event.target 是当前元素自身时触发处理函数
+ *  .once    事件将只会触发一次,实际意义需要看是否与其他修饰符一起使用
+ */ 注意：
+    1、事件修饰符可以串联 
+    <a href="http://www.baidu.com" @click.stop.prevent="links">百度贴吧</a>
+    2、使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生
+ */ 
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>事件修饰符</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 1、第一种情况执行顺序 1、links-> 2、box   -->
+        <!-- <div @click='box'>
+            <a href="http://www.baidu.com" @click="links">百度贴吧</a>
+        </div>  -->
+        <!-- 2、prevent提交事件不再重载页面 -->
+        <!-- <div @click='box'>
+            <a href="http://www.baidu.com" @click.prevent="links">百度贴吧</a>
+        </div> -->
+        <!-- 3、stop 阻止单击事件继续传播-->
+        <!-- <div @click='box'>
+            <a href="http://www.baidu.com" @click.stop.prevent="links">百度贴吧</a>
+        </div> -->
+        <!-- 调研修饰符的顺序 -->
+        <div @click.self.prevent='box' style="width:200px;height:100px;border: 1px red solid">
+            <a href="http://www.baidu.com" @click.prevent.self="links">百度贴吧</a>
+            <br>
+            <a href="http://www.baidu.com" @click.self.prevent="linkss">百度贴吧2</a>
+        </div>
+        <a href="http://wwww.baidu.com" @click.prevent.stop.once='once'>测试使用</a>
+        <br>
+        <a v-on:click.once="once">测试once</a>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            times: new Date()
+        },
+        methods: {
+            box() {
+                alert('div');
+            },
+            links() {
+                alert('baidu');
+            },
+            linkss() {
+                alert('baudu2');
+            },
+            once() {
+                alert('测试使用');
+            }
+
+        }
+    })
+    </script>
+</body>
+
+</html>

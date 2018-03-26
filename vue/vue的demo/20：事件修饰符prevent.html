@@ -9,8 +9,8 @@
 
 <body>
     <div id="app">
-    <!-- 第二中解决方法是采用时间修饰符来解决 -->
-        <form action="" v-on:submit='post($event)'>
+        <!-- 第二中解决方法是采用时间修饰符来解决 -->
+        <form action="" @submit.prevent='post(' abcd ')'>
             <h1>{{times}}</h1>
             <button>提交</button>
         </form>
@@ -25,7 +25,7 @@
             post(event) {
                 // 第一种方法用传入的原始时间来解决
                 // if (event) event.preventDefault();
-                alert(123456);
+                alert(event);
             }
         }
     })

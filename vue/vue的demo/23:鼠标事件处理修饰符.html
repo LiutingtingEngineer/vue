@@ -1,0 +1,46 @@
+<!-- 
+.left
+.right
+.middle
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>事件修饰符</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <div :style="style" v-on:click.preventleft="mouse('left')"></div>
+        <div :style="style" v-on:click.prevent.right="mouse('right')"></div>
+        <!-- 苹果电脑的鼠标没有中间键 -->
+        <div :style="style" v-on:click.prevent.middle="mouse('middle')"></div>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            style: { border: "solid 1px red", width: '100px', height: "100px", margin: "10px" }
+        },
+        methods: {
+            mouse(data) {
+                switch (data) {
+                    case 'left':
+                        console.log('left');
+                        break;
+                    case 'right':
+                        console.log('right');
+                        break;
+                    default:
+                        console.log('middle');
+                }
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

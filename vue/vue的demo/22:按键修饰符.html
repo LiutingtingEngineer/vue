@@ -1,0 +1,52 @@
+<!-- 
+.esc
+.tab
+.delete (捕获“删除”和“退格”键)
+.esc
+.space
+.up
+.down
+.left
+.right
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>事件修饰符</title>
+    <meta charset="utf-8">
+    <script src='vue.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" placeholder="enter" v-on:keyup.enter="keyEvent('enter')">
+        <br>
+        <input type="text" placeholder="tab" v-on:keyup.tab="keyEvent('tab')">
+        <br>
+        <input type="text" placeholder="delete" v-on:keyup.delete="keyEvent('delete')">
+        <br>
+        <input type="text" placeholder="esc" v-on:keyup.esc="keyEvent('esc')">
+        <br>
+        <input type="text" v-on:keyup="key($event)">
+        <br>
+        <button v-on:click.alt.exact="key($event)">测试按键</button>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {},
+        methods: {
+            keyEvent(data) {
+                console.log(data);
+            },
+            key(event) {
+                console.log(event)
+                console.log(event.keyCode)
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>
